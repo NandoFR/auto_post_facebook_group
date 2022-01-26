@@ -35,9 +35,69 @@ Access the folder with:
 
 `cd auto_post_facebook_group`
 
-Now open with your favorite IDE, in this case i will be using [**Visual Studio Code**](https://code.visualstudio.com/):
+Now, open with your favorite IDE, in this case i will be using [**Visual Studio Code**](https://code.visualstudio.com/):
 
 `code .`
+
+---
+
+The project structure:
+
+![Project Tree](./assets/project_tree.png)
+
+Install project's dependencies on **requirements.txt**:
+
+`pip install -r requirements.txt`
+
+*This requirements.txt contains all projects dependencies, is very common to see this on most Python projects*
+
+Now, how have to rename this **.env.example** file for **.env**
+
+`cp .env.example .env`
+
+![.env file](./assets/env.png)
+
+In this file, in will see some environment variables:
+
+- **FACEBOOK_LOGIN** = You will put your Facebook login
+- **FACEBOOK_PASSWORD** = You will put your Facebook password
+- **DELAY_FOR_EACH_POST** = It's a time to wait on every post completed in seconds
+- **SKIP_IF_GROUP_NOT_FOUND** = If page not found, will continue for the next group link
+- **DEBUG** = If debug is equal True, the post will not occour
+
+*.env means environment file, on this file, will have all of your config and sensitive data about your project, like password, api-keys, and more. This is usefull for easily setup your development and production environment, not needing hard-core all this data again.*
+
+---
+
+This is most importanting folder:
+
+![data_folder](./assets/data_folder.png)
+
+- On **files** folder, will contain the imagens, videos, or gifs what you want to attach
+- **post.txt** will contain your post text content
+- **groups.txt** will be list of links of all groups you want to make a post
+
+### **post.txt**:
+![post_file](./assets/post.png)
+*You can write on Facebook, with emojis, and copy and paste here*
+
+
+### **groups.txt**:
+![group_file](./assets/group.png)
+*This is only three supported url format*
+
+
+### **files**:
+![files_folder](./assets/files.png)
+
+*Will contain just a image for example*
+
+---
+
+## **This is the result:**
+![post_completed_example](./assets/done.png)
+
+
 
 
 

@@ -15,7 +15,7 @@ class Facebook:
             self.facebook_url = 'https://mbasic.facebook.com'
             self.chrome = webdriver.Chrome(ChromeDriverManager().install())
             self.chrome.maximize_window()
-            self.chrome.implicitly_wait(10)
+            self.chrome.implicitly_wait(60)
       
       def go_to_facebook(self):
             self.chrome.get(self.facebook_url)
