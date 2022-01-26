@@ -29,17 +29,6 @@ class Facebook:
             if 'save-device' in self.chrome.current_url:
                   self.chrome.find_element(By.XPATH, '//a').click()
       
-      def get_textarea_if_exists(self):
-            try:
-                  return self.chrome.find_element(By.XPATH, '//textarea[@name="xc_message"]')
-            except:
-                  if self.skip_if_group_not_found:
-                        return False
-                  
-                  self.chrome.close()
-                  raise AssertionError
-
-      
       def clear_url(self, url):
             if url.find('g') == 0:
                   return url
@@ -55,17 +44,20 @@ class Facebook:
                   all_groups = group_file.readlines()
                   for group in all_groups:
                         self.chrome.get(os.path.join(self.facebook_url, self.clear_url(group)))
-                        self.chrome.find_element(By.XPATH, '//input[@name="view_overview"]').click()
+                        
+                        try:
+                              self.chrome.find_element(By.XPATH, '//input[@name="view_overview"]').click()
+                        except:
+                              if self.skip_if_group_not_found:
+                                    continue
+                              
+                              self.chrome.close()
+                              raise AssertionError
+
                         with open('./data/post.txt', 'r') as post_file:
                               all_lines = post_file.readlines()
                               post = ''.join([str(line) for line in all_lines])
-
-                              textarea = self.get_textarea_if_exists()
-                        
-                              if not textarea:
-                                    continue
-
-                              textarea.send_keys(post)
+                              self.chrome.find_element(By.XPATH, '//textarea[@name="xc_message"]').send_keys(post)
                               post_file.close()
                         
                         files_absolute_path = os.path.abspath('./data/files')
