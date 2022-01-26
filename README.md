@@ -79,11 +79,13 @@ This is most importanting folder:
 
 ### **post.txt**:
 ![post_file](./assets/post.png)
+
 *You can write on Facebook, with emojis, and copy and paste here*
 
 
 ### **groups.txt**:
 ![group_file](./assets/group.png)
+
 *This is only three supported url format*
 
 

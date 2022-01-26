@@ -70,6 +70,9 @@ class Facebook:
                         
                         files_absolute_path = os.path.abspath('./data/files')
                         for file in os.listdir(files_absolute_path):
+                              if '.gitkeep' in file:
+                                    continue
+                              
                               self.chrome.find_element(By.XPATH, '//input[@name="view_photo"]').click()
                               self.chrome.find_element(By.XPATH, '//input[@name="file1"]').send_keys(os.path.join(files_absolute_path, file))
                               self.chrome.find_element(By.XPATH, '//input[@name="add_photo_done"]').click()
