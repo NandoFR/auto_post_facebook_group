@@ -79,4 +79,5 @@ class Facebook:
             self.login_facebook()
             self.close_save_device_page()
             self.post_in_group_loop()
+            sleep(10)
             self.chrome.close()
